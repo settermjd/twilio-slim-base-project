@@ -48,10 +48,6 @@
         }
     },
     "scripts": {
-        "serve": [
-            "Composer\\Config::disableProcessTimeout",
-            "php -S 0.0.0.0:8080 -t public"
-        ],
         "check": [
             "@cs-check",
             "@static-analysis",
@@ -59,6 +55,14 @@
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
+        "post-create-project-cmd": [
+            "cp -v .env.example .env",
+            "@composer install"
+        ],
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "php -S 0.0.0.0:8080 -t public"
+        ],
         "static-analysis": "vendor/bin/phpstan analyse",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
