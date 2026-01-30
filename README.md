@@ -29,6 +29,12 @@ To create a new project from this project, wherever you store your PHP apps, run
 composer create-project settermjd/twilio-slim-base-project my-project
 ```
 
+Then, open [the Twilio Console][twilio-console] in your browser of choice, and copy the **Account SID**, **Auth Token**, and **phone number** from the **Account Info**, as you can see in the screenshot below.
+
+![The Twilio Console's Account Info panel, with the Account SID and My Twilio phone number field's redacted.](./docs/images/twilio-console-account-info-panel-shorter.png)
+
+Then, set those values as the values of `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, and `TWILIO_PHONE_NUMBER`, respectively, in _.env_.
+
 ## Contributing
 
 If you want to contribute to the project, whether you have found issues with it or just want to improve it, here's how:
@@ -51,6 +57,7 @@ No warranty expressed or implied. Software is as is.
 [github-prs]: https://github.com/settermjd/twilio-slim-base-project/pulls
 [mit-license]: http://www.opensource.org/licenses/mit-license.html
 [slim-framework]: https://www.slimframework.com
+[twilio-console]: https://console.twilio.com
 [twilio-tutorials]: https://www.twilio.com/en-us/blog/authors/author.msetter
 
 <!-- markdownlint-enable MD013 -->
