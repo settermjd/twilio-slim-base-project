@@ -56,8 +56,7 @@
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
         "post-create-project-cmd": [
-            "cp -v .env.example .env",
-            "@composer install"
+            "cp -v .env.example .env"
         ],
         "serve": [
             "Composer\\Config::disableProcessTimeout",
