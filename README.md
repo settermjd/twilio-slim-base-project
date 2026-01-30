@@ -26,8 +26,11 @@ You'll need the following to use the application:
 To create a new project from this project, wherever you store your PHP apps, run the following command:
 
 ```bash
-composer create-project settermjd/twilio-slim-base-project my-project
+composer create-project settermjd/twilio-slim-base-project <my-project>
 ```
+
+> [!TIP]
+> Replace `<my-project>` with whatever you want to name the new project directory.
 
 Then, open [the Twilio Console][twilio-console] in your browser of choice, and copy the **Account SID**, **Auth Token**, and **phone number** from the **Account Info**, as you can see in the screenshot below.
 
