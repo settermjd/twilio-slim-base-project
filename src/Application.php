@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App;
 
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\App;
-use Slim\Factory\AppFactory;
+use Slim\App as SlimApp;
+use Slim\Interfaces\RouteInterface;
 
 /**
  * This class encapsulates the central Slim application,
@@ -16,17 +15,21 @@ use Slim\Factory\AppFactory;
  */
 final class Application
 {
-    private App $app;
-
-    public function __construct(private readonly ContainerInterface $container)
+    public function __construct(private readonly SlimApp $app)
     {
-        AppFactory::setContainer($container);
-        $this->app = AppFactory::createFromContainer($container);
     }
 
     public function setupRoutes(): void
     {
         $this->app->get('/', [$this, 'handleDefaultRoute']);
+    }
+
+    /**
+     * @return RouteInterface[]
+     */
+    public function getRoutes(): array
+    {
+        return $this->app->getRouteCollector()->getRoutes();
     }
 
     public function run(): void
