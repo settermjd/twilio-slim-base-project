@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Application;
 use DI\Container;
 use Dotenv\Dotenv;
+use Slim\Factory\AppFactory;
 use Twilio\Rest\Client;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -31,6 +32,9 @@ $container->set(
     fn() => new Client($_ENV['TWILIO_ACCOUNT_SID'], $_ENV['TWILIO_AUTH_TOKEN']),
 );
 
-$application = new Application($container);
+AppFactory::setContainer($container);
+$app = AppFactory::createFromContainer($container);
+
+$application = new Application($app);
 $application->setupRoutes();
 $application->run();
