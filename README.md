@@ -9,8 +9,13 @@ Rather, it's designed to save me time getting started building my next PHP proje
 It:
 
 - Is a small, web-based PHP application based on [the Slim Framework][slim-framework]
-- Has one route which returns no body, and a minimum of HTTP headers
+- Has one route which returns no body and a minimum of HTTP headers
 - Wraps Slim's `Application` object in a small utility class to make writing maintainable code easier
+
+> [!note]
+> The project does not make presumptions about the kind of application which will be built with it, thereby leaning toward a more ad hoc approach.
+> However, it still tries to provide a sense of structure, for when that may be necessary, by including three empty directories: _Entities_, _Services_, and _Middleware_ in the _src_ directory.
+> These are to provide a clear sense of structure as and when an application is built that would make use of these types of classes.
 
 ## Prerequisites
 
