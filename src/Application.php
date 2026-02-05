@@ -15,16 +15,19 @@ use Slim\Interfaces\RouteInterface;
  */
 final class Application
 {
-    public function __construct(private readonly SlimApp $app)
-    {
-    }
+    public function __construct(private readonly SlimApp $app) {}
 
+    /**
+     * setupRoutes sets up the application's routing table
+     */
     public function setupRoutes(): void
     {
         $this->app->get('/', [$this, 'handleDefaultRoute']);
     }
 
     /**
+     * getRoutes returns the application's current routes
+     *
      * @return RouteInterface[]
      */
     public function getRoutes(): array
@@ -32,11 +35,20 @@ final class Application
         return $this->app->getRouteCollector()->getRoutes();
     }
 
+    /**
+     * run launches the application
+     */
     public function run(): void
     {
         $this->app->run();
     }
 
+    /**
+     * handleDefaultRoute responds to requests to the default route
+     *
+     * Currently, it's effectively a stub, as the project doesn't dictate nor assume
+     * the kind of application that will be built.
+     */
     public function handleDefaultRoute(
         ServerRequestInterface $request,
         ResponseInterface $response,
