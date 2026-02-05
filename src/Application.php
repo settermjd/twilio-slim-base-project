@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\App as SlimApp;
 use Slim\Interfaces\RouteInterface;
+use Slim\Middleware\ContentLengthMiddleware;
 
 /**
  * This class encapsulates the central Slim application,
@@ -15,7 +16,13 @@ use Slim\Interfaces\RouteInterface;
  */
 final class Application
 {
-    public function __construct(private readonly SlimApp $app) {}
+    public function __construct(private readonly SlimApp $app)
+    {
+        $app->add(new ContentLengthMiddleware());
+        $app->addBodyParsingMiddleware();
+        $app->addRoutingMiddleware();
+        $app->addErrorMiddleware(true, true, true);
+    }
 
     /**
      * setupRoutes sets up the application's routing table
