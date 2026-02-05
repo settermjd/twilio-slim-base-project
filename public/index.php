@@ -39,7 +39,7 @@ $container = new Container();
  */
 $container->set(
     Client::class,
-    fn() => new Client($_ENV['TWILIO_ACCOUNT_SID'], $_ENV['TWILIO_AUTH_TOKEN']),
+    fn(): Client => new Client($_ENV['TWILIO_ACCOUNT_SID'], $_ENV['TWILIO_AUTH_TOKEN']),
 );
 
 /**
