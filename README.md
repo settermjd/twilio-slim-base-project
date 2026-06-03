@@ -43,6 +43,21 @@ Then, open [the Twilio Console][twilio-console] in your browser of choice, and c
 
 Then, set those values as the values of `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, and `TWILIO_PHONE_NUMBER`, respectively, in _.env_.
 
+### Configuring the application
+
+Once the project has been bootstrapped, if you want to use the Twilio Rest Client registered with the container, uncomment the first element of the array passed to initialise the `RequiredEnvironmentVariables` object, which is passed to `$dotenv->required()` in _public/index.php_.
+
+For example:
+
+```php
+$dotenv->required(
+    new RequiredEnvironmentVariables([
+        App\Config\RequiredEnvironmentVariables\Spec\TwilioRestClient::class,
+        // App\Config\RequiredEnvironmentVariables\Spec\TwilioPhoneNumber::class,
+    ])->getEnvVars(),
+)->notEmpty();
+```
+
 ## Contributing
 
 If you want to contribute to the project, whether you have found issues with it or just want to improve it, here's how:
