@@ -45,7 +45,7 @@ Then, set those values as the values of `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN
 
 ### Configuring the application
 
-Once the project has been bootstrapped, if you want to use the Twilio Rest Client registered with the container, uncomment the first element of the array passed to initialise the `RequiredEnvironmentVariables` object, which is passed to `$dotenv->required()` in _public/index.php_.
+Once the project has been bootstrapped, if you want to use the Twilio Rest Client registered with the container, in _public/index.php_ uncomment the `$dotenv->required()` code, below, then uncomment the first element of the array passed to initialise the `RequiredEnvironmentVariables` object.
 
 For example:
 
@@ -57,6 +57,9 @@ $dotenv->required(
     ])->getEnvVars(),
 )->notEmpty();
 ```
+
+> [!IMPORTANT]  
+> Don't forget to uncomment the accompanying use statement at the top of the file: `// use App\Config\RequiredEnvironmentVariables;`.
 
 ## Contributing
 
