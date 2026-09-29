@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Application;
 use DI\Container;
-use App\Config\RequiredEnvironmentVariables;
+// use App\Config\RequiredEnvironmentVariables;
 use Dotenv\Dotenv;
 use Slim\Factory\AppFactory;
 use Twilio\Rest\Client;
@@ -17,12 +17,14 @@ require __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-$dotenv->required(
-    new RequiredEnvironmentVariables([
-        // App\Config\RequiredEnvironmentVariables\Spec\TwilioRestClient::class,
-        // App\Config\RequiredEnvironmentVariables\Spec\TwilioPhoneNumber::class,
-    ])->getEnvVars(),
-)->notEmpty();
+/**
+ * $dotenv->required(
+ *     new RequiredEnvironmentVariables([
+ *         // App\Config\RequiredEnvironmentVariables\Spec\TwilioRestClient::class,
+ *         // App\Config\RequiredEnvironmentVariables\Spec\TwilioPhoneNumber::class,
+ *     ])->getEnvVars(),
+ * )->notEmpty();
+ */
 
 /**
  * We next set up the application's DI container, which uses PHP-DI.
